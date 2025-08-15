@@ -1,110 +1,147 @@
 
-# 🎭 Artistic Filter App (Colab Ready)
 
-Transform your images into artistic "cartoon-style" artwork using OpenCV and Python!  
-This project allows you to apply **smooth color effects**, **edge detection**, and **posterization** to create stylized images.  
-Run directly in **Google Colab** without local setup.
+# 🎨 Advanced Artistic Filter App (Colab Ready)
+
+Transform your images into stunning artwork with **8 different artistic styles** using OpenCV! This enhanced version offers a wide range of filters from cartoon effects to vintage looks, all runnable in **Google Colab** without local setup.
+
+
+
+## 🌟 Key Features
+
+### 🖌️ **8 Professional Artistic Filters**
+1. **Cartoon** - Classic comic-style effect with smooth colors and bold edges
+2. **Pencil Sketch** - Convert photos into realistic pencil drawings
+3. **Watercolor** - Simulate beautiful watercolor paintings
+4. **Oil Painting** - Digital oil painting effect with brush strokes
+5. **Pop Art** - Vibrant, posterized look with bold outlines
+6. **Enhanced HD** - Professional image enhancement and sharpening
+7. **Vintage** - Nostalgic sepia tones with film grain
+8. **Grayscale Art** - Artistic black & white conversion
+
+### 🎛️ **Advanced Controls**
+- Adjust **every parameter** for each filter
+- Save your favorite settings as **custom presets**
+- Real-time preview of changes
+- High-quality output in JPG format
+
+### ☁️ **Cloud Ready**
+- 100% **Google Colab compatible** - runs in your browser
+- No installation needed for Colab version
+- Works with **any JPG/PNG image**
 
 ---
 
-## 📌 Features
-- 🎨 **Multiple Artistic Presets**
-  - `soft_cartoon` → Smooth & subtle effect.
-  - `strong_cartoon` → Bold, saturated cartoon style.
-  - `sketchy` → Pencil-sketch style with Canny edges.
-- ⚙️ **Custom Parameter Mode**
-  - Fine-tune bilateral filtering, edge detection, posterization levels.
-  - Save your favorite settings as **custom presets**.
-- 💾 Save output as a high-quality `.jpg`.
-- 🌐 100% **Google Colab ready** — works without installing dependencies locally.
+## 🚀 Quick Start
 
+### Option 1: Run in Google Colab (Recommended)
+1. Open **[Google Colab](https://colab.research.google.com)**
+2. Upload the notebook or Python script
+3. Run all cells - you'll be prompted to upload your image
+4. Choose a filter and customize to your liking!
 
-## 🚀 Getting Started
-
-### 1️⃣ Run in Google Colab
-1. Open **Google Colab**: [https://colab.research.google.com](https://colab.research.google.com)
-2. Upload `artistic_filter_app.py` to Colab.
-3. Run all cells — you will be prompted to upload your image.
-
-### 2️⃣ Local Installation (Optional)
+### Option 2: Local Installation
 ```bash
-# Clone repository
+# Clone the repository
 git clone https://github.com/<your-username>/artistic-filter-app.git
 cd artistic-filter-app
 
-# Install dependencies
+# Install requirements
 pip install -r requirements.txt
 
-# Run script
+# Run the app
 python artistic_filter_app.py
-````
+```
 
 ---
 
-## ⚙️ Usage
+## 🎚️ Available Presets
 
-When running the app:
-
-1. **Upload** an image (JPG/PNG).
-2. Choose a **preset** or type `"custom"` to enter your own parameters.
-3. Optionally save your parameters as a **named preset**.
-4. View and **download** the cartoonized result.
-
-**Presets Included:**
+The app comes with carefully tuned presets for each filter:
 
 ```json
 {
   "soft_cartoon": {
-    "bilateral_iters": 4,
-    "bilateral_d": 9,
-    "bilateral_sigmaColor": 75,
-    "bilateral_sigmaSpace": 75,
-    "median_ksize": 7,
-    "use_canny": false,
-    "edge_dilate": 1,
-    "posterize_levels": 12
+    "filter": "cartoon",
+    "params": {
+      "bilateral_iters": 4,
+      "bilateral_d": 9,
+      "bilateral_sigmaColor": 75,
+      "bilateral_sigmaSpace": 75,
+      "median_ksize": 7,
+      "use_canny": false,
+      "edge_dilate": 1,
+      "posterize_levels": 12
+    }
   },
-  "strong_cartoon": {
-    "bilateral_iters": 7,
-    "bilateral_d": 9,
-    "bilateral_sigmaColor": 100,
-    "bilateral_sigmaSpace": 100,
-    "median_ksize": 7,
-    "use_canny": false,
-    "edge_dilate": 2,
-    "posterize_levels": 8
+  "pencil_sketch": {
+    "filter": "pencil_sketch",
+    "params": {
+      "invert": true,
+      "blur_ksize": 21,
+      "edge_ksize": 3
+    }
   },
-  "sketchy": {
-    "bilateral_iters": 1,
-    "bilateral_d": 9,
-    "bilateral_sigmaColor": 50,
-    "bilateral_sigmaSpace": 50,
-    "median_ksize": 5,
-    "use_canny": true,
-    "canny_thr1": 50,
-    "canny_thr2": 150,
-    "edge_dilate": 1,
-    "posterize_levels": null
+  "watercolor": {
+    "filter": "watercolor",
+    "params": {
+      "bilateral_iter": 3,
+      "bilateral_d": 9,
+      "sigmaColor": 50,
+      "sigmaSpace": 50,
+      "median_ksize": 5
+    }
+  },
+  "oil_painting": {
+    "filter": "oil_painting",
+    "params": {
+      "size": 7,
+      "dynRatio": 1
+    }
+  },
+  "pop_art": {
+    "filter": "pop_art",
+    "params": {
+      "num_colors": 8,
+      "edge_thickness": 2
+    }
   }
 }
+```
 
+*(Additional presets included in the full app)*
 
-## 📦 Dependencies
+---
 
-* Python 3.x
-* [OpenCV](https://opencv.org/) (`cv2`)
-* NumPy
-* Matplotlib
-* Google Colab's `files` module (if running in Colab)
+## 🛠️ Technical Details
 
-Install locally via:
+### 🔧 Dependencies
+- Python 3.6+
+- OpenCV (`opencv-python`)
+- NumPy
+- Matplotlib (for display)
+- Google Colab `files` module (Colab version only)
 
-
+Install locally with:
+```bash
 pip install opencv-python numpy matplotlib
+```
 
+### 🖼️ Supported Image Formats
+- JPEG (.jpg, .jpeg)
+- PNG (.png)
+
+### 📁 Output
+- Saves as high-quality JPG
+- Preserves original image dimensions
+- Side-by-side comparison with original
+
+---
 
 ## 📜 License
 
-This project is licensed under the **MIT License** — feel free to use, modify, and share.
+This project is licensed under the **MIT License** - free for personal and commercial use.
 
 
+4. Save your custom presets for frequently used styles
+
+Enjoy creating stunning artistic versions of your photos! 🎨✨
